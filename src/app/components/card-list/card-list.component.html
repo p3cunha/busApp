@@ -1,0 +1,25 @@
+<div class="container" *ngIf="(searchedBus$ | async) as searchedBus">
+  <app-search-bar
+    [items]="searchedBus"
+    [searchControl]="searchControl"
+  ></app-search-bar>
+  <div class="list-container" *ngIf="items.length; else loading">
+    <div
+      *ngFor="let bus of searchedBus.slice(pagIndex, pagIndex + pageSize)"
+      class="bus"
+      matTooltip="{{ bus.codigo }} - {{ bus.nome }}"
+      (click)="openDialog(bus)"
+    >
+      <span>{{ bus.codigo }}</span>
+      <span>{{ bus.nome }}</span>
+    </div>
+  </div>
+  <app-paginator
+    [pageSize]="pageSize"
+    [items]="searchedBus"
+    (onChange)="pagIndex = $event.currentPage; pageSize = $event.pageSize"
+  ></app-paginator>
+</div>
+<ng-template #loading>
+  <mat-spinner [diameter]="40"></mat-spinner>
+</ng-template>

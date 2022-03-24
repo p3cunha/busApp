@@ -1,0 +1,17 @@
+<mat-tab-group mat-align-tabs="center" animationDuration="0ms">
+  <mat-tab label="Linhas de ônibus">
+    <app-card-list
+      *ngIf="busLines$ | async as busLines; else loading"
+      [items]="busLines"
+    ></app-card-list>
+  </mat-tab>
+  <mat-tab label="Linhas de lotação">
+    <app-card-list
+      *ngIf="busStations$ | async as busStations; else loading"
+      [items]="busStations"
+    ></app-card-list>
+  </mat-tab>
+  <ng-template #loading>
+    <mat-spinner [diameter]="20"></mat-spinner>
+  </ng-template>
+</mat-tab-group>

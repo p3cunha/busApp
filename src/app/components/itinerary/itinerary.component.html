@@ -1,0 +1,68 @@
+<div
+  class="container"
+  *ngIf="coordinates$ | async as coordinates; else loading"
+>
+  <header>
+    <span>{{ bus.codigo }}</span>
+    <span>{{ bus.nome }}</span>
+  </header>
+  <agm-map
+    [latitude]="centralizeMap(coordinates).lat"
+    [longitude]="centralizeMap(coordinates).lng"
+    [zoom]="13"
+  >
+    <agm-marker
+      [latitude]="coordinates[0].lat"
+      [longitude]="coordinates[0].lng"
+    ></agm-marker>
+    <agm-polyline strokeColor="hsl(209deg 100% 40%)">
+      <ng-container *ngFor="let coordinate of coordinates">
+        <agm-polyline-point
+          *ngIf="coordinate"
+          [latitude]="coordinate.lat"
+          [longitude]="coordinate.lng"
+        >
+        </agm-polyline-point>
+      </ng-container>
+    </agm-polyline>
+    <agm-marker
+      [latitude]="getLastCoordinate(coordinates).lat"
+      [longitude]="getLastCoordinate(coordinates).lng"
+    >
+    </agm-marker>
+
+    <agm-marker
+      *ngIf="selectedCoordinate$ | async as selectedCoordinate"
+      [latitude]="selectedCoordinate.lat"
+      [longitude]="selectedCoordinate.lng"
+      [label]="{
+        color: '#203334',
+        text: 'Visualizar no Google Maps',
+        fontSize: '10px',
+        fontWeight: '800'
+      }"
+      (markerClick)="redirectToMaps(selectedCoordinate)"
+    ></agm-marker>
+  </agm-map>
+
+  <section class="coordinate-list">
+    <label>Coordenadas ({{ coordinates.length }})</label>
+    <mat-selection-list #coordinates [multiple]="false">
+      <mat-list-option
+        *ngFor="let coordinate of coordinates"
+        [value]="coordinate"
+        (selectedChange)="changeCurrentLocation(coordinate)"
+      >
+        <mat-icon
+          matTooltip="Visualizar no Google Maps"
+          (click)="redirectToMaps(coordinate)"
+          >location_on</mat-icon
+        >
+        {{ "Lat: " + coordinate.lat }} {{ " | Long: " + coordinate.lng }}
+      </mat-list-option>
+    </mat-selection-list>
+  </section>
+</div>
+<ng-template #loading>
+  <mat-spinner [diameter]="40"></mat-spinner>
+</ng-template>
