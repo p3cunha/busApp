@@ -8,17 +8,18 @@ Consulte a rota de cada linha, obtendo uma perspectiva do itinerário através d
 
 ## 🔧 Ferramentas
 
-### Angular v12
-- Framework
+### Framework
+- Angular v12
 
-### Angular Material
-- Componentes e design
-### Angular Google Maps (AGM) Core
-- Integração com o Google Maps
+### Componentes e design
+- Angular Material
 
-## Rode na sua máquina:
+### Integração com o Google Maps
+- Angular Google Maps (AGM) Core
 
-### Abra o terminal em seu workspace
+## Rode em sua máquina:
+
+### Abra o terminal em seu workspace!
 
 ### Clone o projeto em seu computador: 
 `git clone https://github.com/p3cunha/busApp.git`
