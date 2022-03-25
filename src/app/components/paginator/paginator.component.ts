@@ -51,8 +51,8 @@ export class PaginatorComponent implements OnInit, OnChanges {
           : startIndex + pageSize;
       return `${startIndex + 1} - ${endIndex} de ${length}`;
     };
-    this.paginator._intl.nextPageLabel = "Próxima página"
-    this.paginator._intl.previousPageLabel = "Página anterior"
+    this.paginator._intl.nextPageLabel = 'Próxima página';
+    this.paginator._intl.previousPageLabel = 'Página anterior';
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CardListComponent } from './card-list.component';
+import { CardListComponent, CardListModule } from './card-list.component';
 
 describe('CardListComponent', () => {
   let component: CardListComponent;
@@ -8,9 +9,9 @@ describe('CardListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardListComponent ]
-    })
-    .compileComponents();
+      declarations: [CardListComponent],
+      imports: [BrowserAnimationsModule, CardListModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

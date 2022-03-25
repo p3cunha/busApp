@@ -1,11 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { Observable } from 'rxjs';
-import { Bus } from 'src/app/interfaces/bus.interface';
 
 import { BusService } from '../services/bus.service';
 
-fdescribe('PostService', () => {
+describe('PostService', () => {
   let service: BusService;
 
   beforeEach(() => {

@@ -58,15 +58,15 @@ export class ItineraryComponent {
         lng: (this.coordinatesList._value[0] as any).lng,
       };
     return {
-      lat: coordinates?.[0]?.lat,
-      lng: coordinates?.[0]?.lng,
+      lat: coordinates[0].lat,
+      lng: coordinates[0].lng,
     };
   }
 
   getLastCoordinate(coordinates: Coordinate[]) {
     return {
-      lat: coordinates?.[coordinates?.length - 1]?.lat,
-      lng: coordinates?.[coordinates?.length - 1]?.lng,
+      lat: coordinates[coordinates.length - 1].lat,
+      lng: coordinates[coordinates.length - 1].lng,
     };
   }
 
