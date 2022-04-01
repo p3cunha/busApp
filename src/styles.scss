@@ -42,6 +42,14 @@ $foreground: map.get($app-color, foreground);
   min-height: 50vh;
 }
 
+.mat-tab-body-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  height: 686px;
+}
+
 // -----------Modal----------------
 .mat-dialog-container {
   min-height: 87vh !important;
@@ -50,8 +58,8 @@ $foreground: map.get($app-color, foreground);
 }
 /**Maps */
 .agm-map-container-inner {
-  width: 70vw !important;
-  height: 50vh !important;
+  width: 48vw !important;
+  height: 500px !important;
 }
 
 /**Stepper */
@@ -75,6 +83,12 @@ $foreground: map.get($app-color, foreground);
   top: 50%;
 }
 
+/** PDF */
+.ng2-pdf-viewer-container {
+overflow: unset !important;
+}
 
-
-
+.pdfViewer .page canvas {
+  width: 80vw !important;
+  height: 80vh !important;
+}

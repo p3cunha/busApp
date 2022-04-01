@@ -8,27 +8,39 @@ import {
 } from './../itinerary/itinerary.component';
 import { PaginatorModule } from './../paginator/paginator.component';
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+} from '@angular/core';
 import { NgModule } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SearchBarModule } from '../search-bar/search-bar.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
+import { Subject } from 'rxjs';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
-  selector: 'app-card-list',
+  selector: 'bus-line-list',
   templateUrl: './card-list.component.html',
   styleUrls: ['./card-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardListComponent {
+  @Output() selectedBus = new Subject<Bus>();
   @Input() items = new Array<Bus>();
-  pageSize = 21;
+  pageSize = 10;
   pagIndex = 0;
   searchControl = new FormControl();
   searchedBus$ = this.searchControl.valueChanges.pipe(
     startWith(''),
-    map((value) => this._filter(value)),
+    map((value) => this._filter(value))
   );
+  displayedColumns: string[] = ['codigo', 'linha'];
+  selection = new SelectionModel<Bus>(false, []);
+
   constructor(public dialog: MatDialog) {}
 
   openDialog(data: Bus) {
@@ -56,7 +68,8 @@ export class CardListComponent {
     ItineraryModule,
     MatTooltipModule,
     SearchBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableModule,
   ],
   exports: [CardListComponent],
   declarations: [CardListComponent],

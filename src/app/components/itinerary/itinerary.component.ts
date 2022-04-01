@@ -95,8 +95,6 @@ export class ItineraryComponent {
   ],
   exports: [ItineraryComponent],
   declarations: [ItineraryComponent],
-  providers: [
-    { provide: 'Window',  useValue: window }
-  ],
+  providers: [{ provide: 'Window', useValue: window }],
 })
 export class ItineraryModule {}

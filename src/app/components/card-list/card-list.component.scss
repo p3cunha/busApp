@@ -1,8 +1,9 @@
 .container {
   .list-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    margin-top: 1rem;
+    .content {
+      display: flex;
+    }
 
     .bus {
       border: 1px solid #bcbcbc;
@@ -36,4 +37,13 @@
       }
     }
   }
+}
+
+.hovered, .highlighted {
+    background: whitesmoke;
+}
+
+table.mat-table {
+  margin: 0 0 0 4rem;
+  min-width:  425px;
 }

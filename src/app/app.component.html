@@ -1,16 +1,43 @@
 <mat-tab-group mat-align-tabs="center" animationDuration="0ms">
-  <mat-tab label="Linhas de ônibus">
-    <app-card-list
-      *ngIf="busLines$ | async as busLines; else loading"
-      [items]="busLines"
-    ></app-card-list>
+  <mat-tab label="SLIDES">
+    <pdf-viewer
+      src="https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
+      [render-text]="true"
+      [original-size]="false"
+      style="width: 80vw; height: 70vh"
+    ></pdf-viewer>
   </mat-tab>
-  <mat-tab label="Linhas de lotação">
-    <app-card-list
-      *ngIf="busStations$ | async as busStations; else loading"
-      [items]="busStations"
-    ></app-card-list>
+
+  <mat-tab label="SWITCHMAP">
+    <mat-tab-group
+      mat-align-tabs="center"
+      animationDuration="0ms"
+      headerPosition="below"
+    >
+      <mat-tab label="Imperative">
+        <bus-line-list
+          *ngIf="busLines$ | async as busLines"
+          [items]="busLines"
+          (selectedBus)="onBusSelect($event)"
+        ></bus-line-list>
+        <bus-route [coordinates]="selectedCoordinates"></bus-route>
+      </mat-tab>
+
+      <mat-tab label="RxJS">
+        <bus-line-list
+          *ngIf="busLines$ | async as busLines"
+          [items]="busLines"
+          (selectedBus)="selectedBus$.next($event)"
+        ></bus-line-list>
+        <bus-route [coordinates]="selectedCoordinates$ | async"></bus-route>
+      </mat-tab>
+    </mat-tab-group>
   </mat-tab>
+
+  <mat-tab label="SEARCH">
+    <reddit-search></reddit-search>
+  </mat-tab>
+  <mat-tab label="About me"> </mat-tab>
   <ng-template #loading>
     <mat-spinner [diameter]="20"></mat-spinner>
   </ng-template>

@@ -22,7 +22,7 @@ export class BusService {
     );
   }
 
-  getBusRoute(busId: string) {
+  getRoute(busId: string) {
     return this.http.get<Itinerary>(
       `http://www.poatransporte.com.br/php/facades/process.php?a=il&p=${busId}`
     );

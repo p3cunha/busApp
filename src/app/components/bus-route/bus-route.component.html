@@ -1,0 +1,31 @@
+<div class="container">
+  <agm-map
+    *ngIf="coordinates; else selectOne"
+    [latitude]="centralizeMap(coordinates).lat"
+    [longitude]="centralizeMap(coordinates).lng"
+    [zoom]="13"
+  >
+    <agm-marker
+      [latitude]="coordinates[0].lat"
+      [longitude]="coordinates[0].lng"
+    ></agm-marker>
+    <agm-polyline strokeColor="hsl(209deg 100% 40%)">
+      <ng-container *ngFor="let coordinate of coordinates">
+        <agm-polyline-point
+          *ngIf="coordinate"
+          [latitude]="coordinate.lat"
+          [longitude]="coordinate.lng"
+        >
+        </agm-polyline-point>
+      </ng-container>
+    </agm-polyline>
+    <agm-marker
+      [latitude]="getLastCoordinate(coordinates).lat"
+      [longitude]="getLastCoordinate(coordinates).lng"
+    >
+    </agm-marker>
+  </agm-map>
+  <ng-template #selectOne>
+    <h2>Selecione uma linha de ônibus</h2>
+  </ng-template>
+</div>

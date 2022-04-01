@@ -1,0 +1,40 @@
+<div class="search-container">
+  <mat-slide-toggle color="warn" (change)="hasFilter = ($event.checked)"
+    >Filtro</mat-slide-toggle
+  >
+
+  <mat-form-field *ngIf="hasFilter" appearance="outline">
+    <mat-label>Favorite food</mat-label>
+    <mat-select [formControl]="subReddit">
+      <mat-option *ngFor="let sub of subs" [value]="sub">
+        {{ sub }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Wallpapers</mat-label>
+    <input
+      matInput
+      [formControl]="search"
+      placeholder="Pesquise um wallpaper"
+      value="Sushi"
+    />
+  </mat-form-field>
+  <div class="imgs">
+    <ng-container
+      class="imgs"
+      *ngFor="
+        let img of (hasFilter)
+          ? (filteredImages$ | async)
+          : (images$ | async)
+      "
+    >
+      <img
+        *ngIf="shouldRenderImg(img)"
+        [src]="img.data.thumbnail"
+        [alt]="img.data.title"
+      />
+    </ng-container>
+  </div>
+</div>

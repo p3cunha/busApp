@@ -27,6 +27,6 @@ export class BusFacade {
   constructor(private busService: BusService, private busState: BusState) {}
 
   getRoute(busId: string): Observable<Itinerary> {
-    return this.busService.getBusRoute(busId);
+    return this.busService.getRoute(busId);
   }
 }

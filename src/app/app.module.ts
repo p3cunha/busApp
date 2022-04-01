@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardListModule } from './components/card-list/card-list.component';
+import { BusRouteModule } from './components/bus-route/bus-route.module';
+import { RedditSearchModule } from './components/reddit-search/reddit-search.module';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +19,10 @@ import { CardListModule } from './components/card-list/card-list.component';
     BrowserAnimationsModule,
     MatTabsModule,
     CardListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    BusRouteModule,
+    RedditSearchModule,
+    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
