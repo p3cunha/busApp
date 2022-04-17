@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { RedditService } from 'src/app/core/services/reddit.service';
 import {
   debounceTime,
   startWith,
@@ -7,15 +7,12 @@ import {
   filter,
   switchMap,
   pluck,
-  tap,
+  retry,
 } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { combineLatest, Observable, Subject } from 'rxjs';
-import {
-  RedditChildren,
-  RedditResponse,
-} from 'src/app/interfaces/reddit.interface';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { combineLatest, Observable } from 'rxjs';
+import { RedditResult } from 'src/app/interfaces/reddit.interface';
 
 @Component({
   selector: 'reddit-search',
@@ -23,24 +20,22 @@ import {
   styleUrls: ['./reddit-search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RedditSearchComponent implements OnInit {
+export class RedditSearchComponent {
   hasFilter = false;
 
   //Com RxJS
   //Sem filtro
+
   search = new FormControl();
-  images$: Observable<RedditChildren[]> = this.search.valueChanges.pipe(
+
+  results$: Observable<RedditResult[]> = this.search.valueChanges.pipe(
     startWith(''),
     map((search) => search.trim()),
-    debounceTime(200),
+    debounceTime(300),
     distinctUntilChanged(),
     filter((search) => search !== ''),
     switchMap((search) =>
-      this.http
-        .get<RedditResponse>(
-          `http://www.reddit.com/r/wallpaper/search.json?restrict_sr=on&q=${search}&sort=comment&limit=50`
-        )
-        .pipe(pluck('data', 'children'))
+      this.service.search(search).pipe(retry(3), pluck('data', 'children'))
     )
   );
 
@@ -50,29 +45,25 @@ export class RedditSearchComponent implements OnInit {
   search$ = this.search.valueChanges.pipe(
     startWith(''),
     map((search) => search.trim()),
-    debounceTime(200),
+    debounceTime(300),
     distinctUntilChanged(),
     filter((search) => search !== '')
   );
   subReddit$ = this.subReddit.valueChanges.pipe(startWith(''));
-  filteredImages$: Observable<RedditChildren[]> = combineLatest([
+  filteredImages$: Observable<RedditResult[]> = combineLatest([
     this.subReddit$,
     this.search$,
   ]).pipe(
     switchMap(([subReddit, search]) =>
-      this.http
-        .get<RedditResponse>(
-          `http://www.reddit.com/r/${subReddit}/search.json?restrict_sr=on&q=${search}&sort=comment&limit=50`
-        )
-        .pipe(pluck('data', 'children'))
+      this.service
+        .subRedditSearch(subReddit, search)
+        .pipe(retry(3), pluck('data', 'children'))
     )
   );
 
-  constructor(private http: HttpClient) {}
+  constructor(private service: RedditService) {}
 
-  ngOnInit(): void {}
-
-  shouldRenderImg(img: RedditChildren) {
+  shouldRenderImg(img: RedditResult) {
     return Boolean(img.data.thumbnail.startsWith('https'));
   }
 }

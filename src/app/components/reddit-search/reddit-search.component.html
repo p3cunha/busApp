@@ -16,15 +16,13 @@
     <input
       matInput
       [formControl]="search"
-      placeholder="Pesquise um wallpaper"
-      value="Sushi"
+      placeholder="reddit.com/r/wallpaper/"
     />
   </mat-form-field>
   <div class="imgs">
     <ng-container
-      class="imgs"
       *ngFor="
-        let img of hasFilter ? (filteredImages$ | async) : (images$ | async)
+        let img of hasFilter ? (filteredImages$ | async) : (results$ | async)
       "
     >
       <img

@@ -9,13 +9,13 @@ export interface RedditData {
   facets: Facets
   after: any
   geo_filter: string
-  children: RedditChildren[]
+  children: RedditResult[]
   before: any
 }
 
 export interface Facets {}
 
-export interface RedditChildren {
+export interface RedditResult {
   kind: string
   data: RedditNestedData
 }

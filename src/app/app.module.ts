@@ -1,3 +1,4 @@
+import { RedditSearchWithoutRxJSModule } from './components/reddit-search-wo-rxjs/reddit-search-wo-rxjs.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgModule } from '@angular/core';
@@ -24,6 +25,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     MatIconModule,
     BusRouteModule,
     RedditSearchModule,
+    RedditSearchWithoutRxJSModule,
     PdfViewerModule
   ],
   providers: [],

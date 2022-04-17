@@ -18,7 +18,18 @@
   </mat-tab>
 
   <mat-tab label="SEARCH">
-    <reddit-search></reddit-search>
+    <mat-tab-group
+      mat-align-tabs="center"
+      animationDuration="0ms"
+      headerPosition="below"
+    >
+    <mat-tab label="Imperativo">
+      <reddit-search-wo-rxjs></reddit-search-wo-rxjs>
+    </mat-tab>
+      <mat-tab label="RxJS">
+        <reddit-search></reddit-search>
+      </mat-tab>
+    </mat-tab-group>
   </mat-tab>
 
   <mat-tab label="SWITCHMAP">
@@ -27,7 +38,7 @@
       animationDuration="0ms"
       headerPosition="below"
     >
-      <mat-tab label="Imperative">
+      <mat-tab label="Imperativo">
         <bus-line-list
           *ngIf="busLines$ | async as busLines"
           [items]="busLines"

@@ -1,0 +1,19 @@
+<div class="search-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Wallpapers</mat-label>
+    <input
+      matInput
+      (keyup)="doSearch($event)"
+      placeholder="reddit.com/r/wallpaper/"
+    />
+  </mat-form-field>
+  <div class="imgs">
+    <ng-container class="imgs" *ngFor="let img of images">
+      <img
+        *ngIf="shouldRenderImg(img)"
+        [src]="img.data.thumbnail"
+        [alt]="img.data.title"
+      />
+    </ng-container>
+  </div>
+</div>
