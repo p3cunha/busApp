@@ -1,11 +1,24 @@
 <mat-tab-group mat-align-tabs="center" animationDuration="0ms">
   <mat-tab label="SLIDES">
-    <pdf-viewer
-      src="https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
-      [render-text]="true"
-      [original-size]="false"
-      style="width: 80vw; height: 70vh"
-    ></pdf-viewer>
+    <div class="slides">
+      <pdf-viewer
+        src="https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
+        [render-text]="true"
+        [original-size]="false"
+        style="width: 80vw; height: 70vh"
+        (pageChange)="prevPage()"
+        [show-all]="false"
+        [(page)]="page"
+      ></pdf-viewer>
+      <div class="slide-controls">
+        <mat-icon (click)="prevPage()">chevron_left</mat-icon
+        ><mat-icon (click)="nextPage()">navigate_next</mat-icon>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="SEARCH">
+    <reddit-search></reddit-search>
   </mat-tab>
 
   <mat-tab label="SWITCHMAP">
@@ -34,9 +47,6 @@
     </mat-tab-group>
   </mat-tab>
 
-  <mat-tab label="SEARCH">
-    <reddit-search></reddit-search>
-  </mat-tab>
   <mat-tab label="About me"> </mat-tab>
   <ng-template #loading>
     <mat-spinner [diameter]="20"></mat-spinner>

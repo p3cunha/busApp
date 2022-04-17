@@ -1,7 +1,6 @@
 <div class="search-container">
-  <mat-slide-toggle color="warn" (change)="hasFilter = ($event.checked)"
-    >Filtro</mat-slide-toggle
-  >
+  <mat-slide-toggle color="warn" (change)="hasFilter = $event.checked"
+    >combineLatest</mat-slide-toggle>
 
   <mat-form-field *ngIf="hasFilter" appearance="outline">
     <mat-label>Favorite food</mat-label>
@@ -25,9 +24,7 @@
     <ng-container
       class="imgs"
       *ngFor="
-        let img of (hasFilter)
-          ? (filteredImages$ | async)
-          : (images$ | async)
+        let img of hasFilter ? (filteredImages$ | async) : (images$ | async)
       "
     >
       <img

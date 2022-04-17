@@ -39,11 +39,18 @@
   }
 }
 
-.hovered, .highlighted {
-    background: whitesmoke;
+.hovered {
+  background: whitesmoke;
+  cursor: pointer;
+}
+
+.highlighted {
+  background: whitesmoke;
+  pointer-events: none;
 }
 
 table.mat-table {
   margin: 0 0 0 4rem;
-  min-width:  425px;
+  min-width: 425px;
+
 }

@@ -1,6 +1,6 @@
 import { BusService } from './core/services/bus.service';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import {
   distinctUntilChanged,
@@ -11,6 +11,7 @@ import {
 import { BusFacade } from './core/store/bus.facade';
 import { Bus } from './interfaces/bus.interface';
 import { Coordinate } from './interfaces/itinerary.interface';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ export class AppComponent {
   busLines$ = this.busFacade.busLines$;
   busStations$ = this.busFacade.busStations$;
   selectedCoordinates!: Array<Coordinate>;
+  page = 1;
 
   selectedBus$ = new Subject<Bus>();
   selectedCoordinates$ = this.selectedBus$.pipe(
@@ -40,9 +42,16 @@ export class AppComponent {
               return;
             })
             .filter(Boolean)
-        ))));
+        )
+      )
+    )
+  );
 
-  constructor(private busFacade: BusFacade, private busService: BusService) {}
+  constructor(
+    private busFacade: BusFacade,
+    private busService: BusService,
+    private scroll: ViewportScroller
+  ) {}
 
   onBusSelect(bus: Bus) {
     this.busService.getRoute(bus.id).subscribe((itineraryObj) => {
@@ -57,5 +66,13 @@ export class AppComponent {
         })
         .filter(Boolean);
     });
+  }
+
+  prevPage() {
+    this.page = --this.page;
+  }
+
+  nextPage() {
+    this.page = ++this.page;
   }
 }

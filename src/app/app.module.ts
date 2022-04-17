@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +21,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     MatTabsModule,
     CardListModule,
     MatProgressSpinnerModule,
+    MatIconModule,
     BusRouteModule,
     RedditSearchModule,
     PdfViewerModule

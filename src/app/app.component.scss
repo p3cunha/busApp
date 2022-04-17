@@ -5,3 +5,15 @@
 reddit-search {
   height: 100%;
 }
+
+.slides {
+  display: flex;
+
+  .slide-controls {
+    display: flex;
+    align-items: end;
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+}
