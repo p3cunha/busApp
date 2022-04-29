@@ -8,7 +8,7 @@ import { RedditService } from 'src/app/core/services/reddit.service';
   styleUrls: ['./reddit-search-wo-rxjs.component.scss'],
 })
 export class RedditSearchWithoutRxJSComponent implements OnInit {
-  images = new Array<any>();
+  results = new Array<any>();
 
   constructor(private service: RedditService) {}
 
@@ -18,10 +18,12 @@ export class RedditSearchWithoutRxJSComponent implements OnInit {
     return Boolean(img.data.thumbnail.startsWith('https'));
   }
 
-  doSearch(event: KeyboardEvent) {
-    const { value } = event.target as HTMLInputElement;
-    this.service.search(value).subscribe((response) => {
-      this.images = [...response.data.children];
+  doSearch({ target }: KeyboardEvent) {
+    const { value } = target as HTMLInputElement;
+    this.service.search(value).subscribe(({ data: { children } }) => {
+      this.results = [...children];
     });
   }
+
+
 }

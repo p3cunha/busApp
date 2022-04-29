@@ -47,7 +47,7 @@ $foreground: map.get($app-color, foreground);
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  height: 686px;
+  height: unset !important;
 }
 
 // -----------Modal----------------
@@ -91,4 +91,9 @@ overflow: unset !important;
 .pdfViewer .page canvas {
   width: 80vw !important;
   height: 80vh !important;
+}
+
+
+.pdfViewer .canvasWrapper {
+  height: unset !important;
 }

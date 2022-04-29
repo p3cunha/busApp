@@ -8,7 +8,7 @@
     />
   </mat-form-field>
   <div class="imgs">
-    <ng-container class="imgs" *ngFor="let img of images">
+    <ng-container class="imgs" *ngFor="let img of results">
       <img
         *ngIf="shouldRenderImg(img)"
         [src]="img.data.thumbnail"

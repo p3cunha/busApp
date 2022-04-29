@@ -29,7 +29,6 @@ export class RedditSearchComponent {
   search = new FormControl();
 
   results$: Observable<RedditResult[]> = this.search.valueChanges.pipe(
-    startWith(''),
     map((search) => search.trim()),
     debounceTime(300),
     distinctUntilChanged(),
@@ -39,21 +38,20 @@ export class RedditSearchComponent {
     )
   );
 
+  subs = ['OnePiece', 'Movies', 'Pokemon', 'Anime', 'Space', 'Pics', 'Aww'];
+
   //ComFiltro
   subReddit = new FormControl();
-  subs = ['OnePiece', 'Movies', 'Pokemon', 'Anime', 'Space', 'Pics', 'Aww'];
+  subReddit$ = this.subReddit.valueChanges.pipe(startWith(''));
+
   search$ = this.search.valueChanges.pipe(
-    startWith(''),
     map((search) => search.trim()),
     debounceTime(300),
     distinctUntilChanged(),
     filter((search) => search !== '')
   );
-  subReddit$ = this.subReddit.valueChanges.pipe(startWith(''));
-  filteredImages$: Observable<RedditResult[]> = combineLatest([
-    this.subReddit$,
-    this.search$,
-  ]).pipe(
+
+  filteredResults$ = combineLatest([this.subReddit$, this.search$]).pipe(
     switchMap(([subReddit, search]) =>
       this.service
         .subRedditSearch(subReddit, search)

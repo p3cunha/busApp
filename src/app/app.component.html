@@ -2,10 +2,10 @@
   <mat-tab label="SLIDES">
     <div class="slides">
       <pdf-viewer
-        src="https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
+        src="../assets/Programação reativa com Angular e RxJS.pdf"
         [render-text]="true"
         [original-size]="false"
-        style="width: 80vw; height: 70vh"
+        style="width: 80vw; height: 80vh"
         (pageChange)="prevPage()"
         [show-all]="false"
         [(page)]="page"
@@ -23,16 +23,16 @@
       animationDuration="0ms"
       headerPosition="below"
     >
-    <mat-tab label="Imperativo">
-      <reddit-search-wo-rxjs></reddit-search-wo-rxjs>
-    </mat-tab>
+      <mat-tab label="Imperativo">
+        <reddit-search-wo-rxjs></reddit-search-wo-rxjs>
+      </mat-tab>
       <mat-tab label="RxJS">
         <reddit-search></reddit-search>
       </mat-tab>
     </mat-tab-group>
   </mat-tab>
 
-  <mat-tab label="SWITCHMAP">
+  <mat-tab label="BusApp">
     <mat-tab-group
       mat-align-tabs="center"
       animationDuration="0ms"
@@ -58,7 +58,6 @@
     </mat-tab-group>
   </mat-tab>
 
-  <mat-tab label="About me"> </mat-tab>
   <ng-template #loading>
     <mat-spinner [diameter]="20"></mat-spinner>
   </ng-template>
