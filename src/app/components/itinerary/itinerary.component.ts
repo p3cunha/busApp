@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule, MatSelectionList } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Coordinate } from 'src/app/interfaces/itinerary.interface';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-itinerary',
@@ -90,7 +91,7 @@ export class ItineraryComponent {
     MatTooltipModule,
     MatProgressSpinnerModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDoS9Wc0v2wa6_8f501N-sKlpi3KQ9HPtg',
+      apiKey: environment.apiKey
     }),
   ],
   exports: [ItineraryComponent],
