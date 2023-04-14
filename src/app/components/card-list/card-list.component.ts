@@ -1,6 +1,6 @@
 import { Bus } from 'src/app/interfaces/bus.interface';
 import { map, startWith, tap } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {
   ItineraryModule,
@@ -24,7 +24,7 @@ export class CardListComponent {
   @Input() items = new Array<Bus>();
   pageSize = 21;
   pagIndex = 0;
-  searchControl = new FormControl();
+  searchControl = new UntypedFormControl();
   searchedBus$ = this.searchControl.valueChanges.pipe(
     startWith(''),
     map((value) => this._filter(value)),
