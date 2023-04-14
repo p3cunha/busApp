@@ -2,7 +2,7 @@ import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 
 import { ItineraryComponent, ItineraryModule } from './itinerary.component';
 
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { Bus } from 'src/app/interfaces/bus.interface';
 import { Coordinate } from 'src/app/interfaces/itinerary.interface';
