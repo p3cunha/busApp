@@ -1,12 +1,17 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+
   .list-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 1rem;
 
     .bus {
       border: 1px solid #bcbcbc;
-      margin: 0.5rem;
       padding: 0.5rem;
       border-radius: 4px;
       box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);

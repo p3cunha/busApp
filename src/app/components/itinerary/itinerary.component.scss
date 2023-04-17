@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  min-width: 50vw;
+  min-height: 50vh;
+
   header {
     display: flex;
     flex-direction: column;
@@ -18,6 +23,10 @@
     }
   }
   .coordinate-list {
+    overflow: auto;
+    height: 30vh;
+    width: 100%;
+
     label {
       display: flex;
       justify-content: center;

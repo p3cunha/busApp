@@ -1,5 +1,5 @@
 import { Bus } from 'src/app/interfaces/bus.interface';
-import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/legacy-progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
 import { BusFacade } from 'src/app/core/store/bus.facade';
 import {
@@ -9,13 +9,13 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { NgModule } from '@angular/core';
-import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { map, shareReplay } from 'rxjs/operators';
 import { AgmCoreModule } from '@agm/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyListModule as MatListModule, MatLegacySelectionList as MatSelectionList } from '@angular/material/legacy-list';
-import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
+import { MatListModule, MatSelectionList } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { Coordinate } from 'src/app/interfaces/itinerary.interface';
 import { environment } from 'src/environments/environment';
 
@@ -91,13 +91,11 @@ export class ItineraryComponent {
     MatTooltipModule,
     MatProgressSpinnerModule,
     AgmCoreModule.forRoot({
-      apiKey: environment.apiKey
+      apiKey: environment.apiKey,
     }),
   ],
   exports: [ItineraryComponent],
   declarations: [ItineraryComponent],
-  providers: [
-    { provide: 'Window',  useValue: window }
-  ],
+  providers: [{ provide: 'Window', useValue: window }],
 })
 export class ItineraryModule {}

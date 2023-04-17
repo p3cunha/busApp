@@ -1,7 +1,9 @@
-<mat-paginator
-  [length]="items?.length"
-  [pageSize]="pageSize"
-  [pageSizeOptions]="pageSizeOptions"
-  (page)="paginatorChange($event)"
-  aria-label="Select page"
-></mat-paginator>
+<section class="paginator">
+  <mat-paginator
+    [length]="items?.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="paginatorChange($event)"
+    aria-label="Select page"
+  ></mat-paginator>
+</section>

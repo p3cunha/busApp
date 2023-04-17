@@ -1,9 +1,9 @@
 import { Bus } from 'src/app/interfaces/bus.interface';
 import {
-  MatLegacyPaginator as MatPaginator,
-  MatLegacyPaginatorModule as MatPaginatorModule,
-  LegacyPageEvent as PageEvent,
-} from '@angular/material/legacy-paginator';
+  MatPaginator,
+  MatPaginatorModule,
+  PageEvent,
+} from '@angular/material/paginator';
 import {
   Component,
   OnInit,
