@@ -1,0 +1,46 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateBus(
+  $input: CreateBusInput!
+  $condition: ModelBusConditionInput
+) {
+  createBus(input: $input, condition: $condition) {
+    id
+    name
+    code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateBus(
+  $input: UpdateBusInput!
+  $condition: ModelBusConditionInput
+) {
+  updateBus(input: $input, condition: $condition) {
+    id
+    name
+    code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteBus(
+  $input: DeleteBusInput!
+  $condition: ModelBusConditionInput
+) {
+  deleteBus(input: $input, condition: $condition) {
+    id
+    name
+    code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

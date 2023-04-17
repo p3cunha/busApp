@@ -1,0 +1,6 @@
+type Bus @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  code: String
+}
+ 

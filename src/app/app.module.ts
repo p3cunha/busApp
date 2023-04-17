@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardListModule } from './components/card-list/card-list.component';
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,8 @@ import { CardListModule } from './components/card-list/card-list.component';
     BrowserAnimationsModule,
     MatTabsModule,
     CardListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    AmplifyAuthenticatorModule
   ],
   providers: [],
   bootstrap: [AppComponent],

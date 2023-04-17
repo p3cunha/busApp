@@ -1,0 +1,37 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateBus($filter: ModelSubscriptionBusFilterInput) {
+  onCreateBus(filter: $filter) {
+    id
+    name
+    code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateBus($filter: ModelSubscriptionBusFilterInput) {
+  onUpdateBus(filter: $filter) {
+    id
+    name
+    code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteBus($filter: ModelSubscriptionBusFilterInput) {
+  onDeleteBus(filter: $filter) {
+    id
+    name
+    code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

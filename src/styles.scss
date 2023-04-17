@@ -3,6 +3,7 @@
 @use "sass:map";
 @import "@angular/material/theming";
 @include mat-core();
+@import '~@aws-amplify/ui-angular/theme.css';
 
 html,
 body {
